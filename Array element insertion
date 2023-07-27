@@ -45,3 +45,50 @@ int main()
 
     return 0;
 }
+
+
+
+
+
+
+
+#include <iostream>
+#include <stack>
+#include <queue>
+using namespace std;
+
+bool isPalindrome(string str) {
+    stack<char> charStack;
+    queue<char> charQueue;
+
+    // Push characters into stack and queue
+    for (char c : str) {
+        charStack.push(c);
+        charQueue.push(c);
+    }
+
+    // Compare characters from stack and queue in reverse order
+    while (!charStack.empty()) {
+        if (charStack.top() != charQueue.front())
+            return false;
+
+        charStack.pop();
+        charQueue.pop();
+    }
+
+    return true;
+}
+
+int main() {
+    string input;
+    cout << "Enter a string: ";
+    cin >> input;
+
+    if (isPalindrome(input))
+        cout << "The string is a palindrome." << endl;
+    else
+        cout << "The string is not a palindrome." << endl;
+
+    return 0;
+}
+
